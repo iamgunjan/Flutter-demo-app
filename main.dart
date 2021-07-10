@@ -22,6 +22,22 @@ class MyApp extends StatelessWidget {
   }
 }
 
+class NameScreen extends StatefulWidget {
+  const NameScreen({ Key? key }) : super(key: key);
+
+  @override
+  _NameScreenState createState() => _NameScreenState();
+}
+
+class _NameScreenState extends State<NameScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      
+    );
+  }
+}
+
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key? key, required this.title}) : super(key: key);
   final String title;
@@ -43,7 +59,42 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        centerTitle: true,
+        title: Text("Demo App"),
+        //leading: Icon(Icons.home),
+        actions: [
+          Icon(Icons.login),
+          Icon(Icons.logout),
+        ],
+      ),
+      drawer: Drawer(
+        child:Column(children: [
+          // Container(
+          //   height: 500,
+          //   width: 310,
+          //   color: Colors.blue,
+          //    child: Text("Welcome XYZ")),
+          ListTile(
+            title: Text("Log In"),
+            trailing: Icon(Icons.login),
+          ),
+          Divider(thickness: 2, color: Colors.blue),
+          ListTile(
+            title: Text("Log Out"),
+            trailing: Icon(Icons.logout),
+          ),
+          Divider(thickness: 2, color: Colors.blue),
+          ListTile(
+            title: Text("Help"),
+            trailing: Icon(Icons.help),
+          ),
+          Divider(thickness: 2, color: Colors.blue),
+          ListTile(
+            title: Text("Support"),
+            trailing: Icon(Icons.support),
+          ),
+          Divider(thickness: 2, color: Colors.blue),
+        ],)
       ),
       body: Center(
         child: Column(
