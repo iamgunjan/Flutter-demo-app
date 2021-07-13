@@ -1,12 +1,16 @@
-import 'dart:html';
+//import 'dart.html';
 
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+// ignore: unused_import
+import 'package:url_launcher/url_launcher.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -86,11 +90,19 @@ class _MyHomePageState extends State<MyHomePage> {
           ListTile(
             title: Text("Help"),
             trailing: Icon(Icons.help),
+            onTap: () {
+              print("clicked on Help");
+            }
           ),
           Divider(thickness: 2, color: Colors.blue),
           ListTile(
             title: Text("Support"),
             trailing: Icon(Icons.support),
+            onTap: () {
+              print("Clicked");
+              Fluttertoast.showToast(msg: "Please contact help team");
+              //launchU("https://www.google.com/");
+            }
           ),
           Divider(thickness: 2, color: Colors.blue),
         ],)
@@ -105,11 +117,16 @@ class _MyHomePageState extends State<MyHomePage> {
                 Icon(Icons.verified_user, size: 50.0, color: Colors.green),
               ],
             ),
-            ElevatedButton(
+            Padding(
+              padding: const EdgeInsets.all(30.0),
+            child: ElevatedButton(
               onPressed: (){
               print("user clicked on the submit button");
+              // ignore: deprecated_member_use
+              Scaffold.of(context).showSnackBar(new SnackBar(content: new Text("Sending Message"),
+              ));
             }, child: Text("Submit", style:TextStyle(color: Colors.white))),            
-
+            ),
             Container(
               //padding: EdgeInsets.all(500),
               width: 10000.0,
@@ -140,4 +157,6 @@ class _MyHomePageState extends State<MyHomePage> {
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
+
+  void launchU(String s) {}
 }
